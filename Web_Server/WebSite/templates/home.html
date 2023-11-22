@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OSM and Leaflet</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+    <style>
+        /* CSS per centrare il div */
+        #map {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+<!-- Div centrato -->
+<div id="map"></div>
+
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script>
+    // Coordinate per centrare la mappa (ad esempio, Modena, Italia)
+    var centerCoordinates = [44.647128, 10.925226];
+
+    // Creating map options
+    var mapOptions = {
+        center: centerCoordinates,
+        zoom: 13
+    }
+
+    // Creating a map object
+    var map = L.map('map', mapOptions);
+
+    // Creating a Layer object
+    var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+    // Adding layer to the map
+    map.addLayer(layer);
+
+    // Posizionare un marker al centro della mappa
+    L.marker(centerCoordinates).addTo(map)
+        .bindPopup('Centro della mappa').openPopup();
+</script>
+</body>
+</html>
